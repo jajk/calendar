@@ -21,7 +21,7 @@ Calendar.prototype = {
 					                 +'<option>9<option>10<option>11<option>12'
 					             +'</select>月'
 					         +'</form>'
-                         +'</td></tr>'
+                                             +'</td></tr>'
 					 +'</table>';
 		this.elmDomObj.innerHTML = content;
 	},
@@ -31,7 +31,7 @@ Calendar.prototype = {
 		var _selectMonthDomObj = document.getElementById('calendar_month');
 		var _calTbodyDomObj    = document.getElementById('calendar_tbody');
 		//getting the year from '#calendar_year' element
-	    var _year = parseInt( _selectYearDomObj.options[_selectYearDomObj.selectedIndex].text );
+	        var _year = parseInt( _selectYearDomObj.options[_selectYearDomObj.selectedIndex].text );
 		//getting the month from '#calendar_month' element
 		var _month = _selectMonthDomObj.selectedIndex + 1;
 		
@@ -79,7 +79,7 @@ Calendar.prototype = {
 			}//for
 		}//while
 		_calFirstRowObj = null;
-        _selectYearDomObj = null;
+                _selectYearDomObj = null;
 		_selectMonthDomObj = null;
 		_calTbodyDomObj = null;
 	},
