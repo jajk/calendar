@@ -30,27 +30,28 @@ Calendar.prototype = {
 		var _selectYearDomObj  = document.getElementById('calendar_year');
 		var _selectMonthDomObj = document.getElementById('calendar_month');
 		var _calTbodyDomObj    = document.getElementById('calendar_tbody');
-		//从form中获得年
+		//getting the year from '#calendar_year' element
 	    var _year = parseInt( _selectYearDomObj.options[_selectYearDomObj.selectedIndex].text );
-		//从form中获得月
+		//getting the month from '#calendar_month' element
 		var _month = _selectMonthDomObj.selectedIndex + 1;
 		
 		var _today = new Date();
-		//得到这月的第一天是星期几(0-6)
+		//getting the first day of the specific month
 		var _firstDay = this.getFirstDay(_year,_month);
-		//得到这月有多少天
+		//getting the sum days of the specific month
 		var _sumDay = this.getDaysInMonth(_year,_month);
-		//画天数的临时变量
+		//as temporary variable to remember the increase day
 		var _dayTemp = 1;
-		//画天数时是否画完的变量：true画完,false没画完,初始值为false
+		//as a sign to judge the action of drawing days;
+		//true,stand for the action is over;false,stand for the action is doing 
 		var _sign = false;
-		//在tbody画天数时,存储新增行的临时变量
+		//as temporary variable to remain the new row object
 		var _newRow;
-		//在tbody画天数时,存储新增行的新增列的临时变量
+		//as temporary variable to remain the new cell object
 		var _newCell;
 		var _count;
 		_calFirstRowObj.innerHTML = _year + "年 " + _month + "月";
-		//删除tbody中所有的天数,便于根据上面的年月重绘天数
+		//empty the tbody for drawing again
 		while( _calTbodyDomObj.rows.length > 0 ){
 			_calTbodyDomObj.deleteRow( 0 );
 		}//while
@@ -67,7 +68,7 @@ Calendar.prototype = {
 				} 
 				if( _dayTemp <= _sumDay ){
 					if( _today.getFullYear() == _year && _today.getMonth() == (_month-1) && _today.getDate() == _dayTemp ){
-					    _newCell.id = "today";	
+					    _newCell.className = "today";	
 					} 
 					_newCell.innerHTML = "<a href='#'>"+_dayTemp+"</a>";
 					_dayTemp++;
@@ -98,7 +99,7 @@ Calendar.prototype = {
 				days = 30;
 			    break;
 			case 2:
-				//润年
+				//润年(	leap year)
 				if (((year% 4)==0) && ((year% 100)!=0) || ((year% 400)==0)){
 					days = 29;
 				}			 					
@@ -112,27 +113,29 @@ Calendar.prototype = {
 	initCalendar: function(){
 		var _that = this;
 		var _today = new Date();
-		//getFullYear,四位年1970到...
+		//getFullYear,begin 1970 to ...
 		var _year = _today.getFullYear();
-		//获取年select
+		//getting the select which save the year
 		var _yearChooser = document.getElementById("calendar_year");
-		//获取月select
+		//getting the select which save the month
 		var _monthChooser = document.getElementById("calendar_month");
-		//重置年select
-		_yearChooser.options.length = 0;
+		//increase the select of year,form now to (now + 5)
 		for(var i = _year; i < _year+5; i++){
-		//手动添加select选项
 		_yearChooser.options[_yearChooser.options.length] = new Option(i,i);//text,value
 		}
-		//将年月置为此时此刻的年月
+		//setting the year which is now
 		_yearChooser.selectedIndex = 0;
+		//when select of the year changed, the calendar will redraw the days
 		_yearChooser.onchange = function(){
 			_that.improveCalendar();
 		};
+		//setting the month which is now
 		_monthChooser.selectedIndex = _today.getMonth();
+		//when select of the month changed, the calendar will redraw the days
 		_monthChooser.onchange = function(){
 			_that.improveCalendar();
 		}; 
+		//as first time ,trigger the improveCalendar to draw the days
 		this.improveCalendar();
 		_yearChooser = null;
 		_monthChooser = null;
