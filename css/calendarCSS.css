@@ -1,0 +1,32 @@
+a:link
+{
+ color:black;
+ text-decoration:none
+}
+a:active
+{
+ color:blue;
+ text-decoration:none
+}
+a:hover
+{
+ color:red;
+ text-decoration:none
+}
+#calendar_table
+{
+ border-collapse:collapse;
+ background-color:#99ffff;
+}
+#calendar_firstRow
+{
+ 
+ width:100%
+}
+#today
+{
+ background-color:yellow;
+}
+
+
+
