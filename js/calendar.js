@@ -1,3 +1,11 @@
+/*
+    Calendar.prototype:
+        drawCalendar-->Using the html to sketch out a general calendar skeleton without days,then append to this.elmDomObj;
+        improveCalendar-->according to the select of year and the select of month to draw the days;
+        getFirstDay-->get the first day of the month according the assigned year and month;
+        getDaysInMonth-->get the sum days of the month according the assigned year and month;
+        initCalendar-->init the calendar which is created by the 'drawCalendar' function.
+*/
 function Calendar( elemId ){
 	this.elmDomObj = document.getElementById( elemId );
 	this.drawCalendar();
