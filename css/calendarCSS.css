@@ -2,30 +2,25 @@
 	margin:0;
 	padding:0;
 }
+#calendar_table a {
+    text-decoration:none;	
+	color:#6E6E6E;
+}
 #calendar_table {
 	border-collapse:collapse;
 	background-color:#99ffff;
 }
 #calendar_table form {
-	padding:3px;	
+    padding:3px;	
 }
 #calendar_firstRow {
-	width:100%
+	width:100%;
 }
 #calendar_table .today {
-	background-color:yellow;
-}
-#calendar_table a:link {
-	color:black;
-	text-decoration:none
-}
-#calendar_table a:active {
-	color:blue;
-	text-decoration:none
+	background-color:#FFFF00;
 }
 #calendar_table a:hover {
-	color:red;
-	text-decoration:none
+	color:#C90808;
 }
 
 
