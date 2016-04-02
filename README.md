@@ -1,4 +1,4 @@
-# calendar
+# calendarPlugin
 Using the raw javascript to write a calendar plugin.
 
 The plugin contains js/calendar.js and css/calendarCSS.css.
